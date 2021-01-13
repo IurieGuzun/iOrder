@@ -15,12 +15,14 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(menu) {section in
-                    Text(section.name)
-                    ForEach(section.items) { item in
-                        Text(item.name)
-                    }                }
+                    Section(header: Text(section.name)) {
+                        ForEach(section.items) { item in
+                            ItemRow(item: item)
+                        }
+                    }
+                }
             }.navigationBarTitle("Menu")
-            
+             .listStyle(GroupedListStyle())
         }
     }
 }
